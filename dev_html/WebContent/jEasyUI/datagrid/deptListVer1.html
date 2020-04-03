@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>태그의 속성 대신 자바스크립트로 테이블 조작하기</title>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="https://www.jeasyui.com/easyui/jquery.easyui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/themes/default/easyui.css">
+</head>
+<body>
+	<table id = "dg_dept" class = "easyui-datagrid"></table>
+	<script type="text/javascript">
+		$("#dg_dept").datagrid({
+			url : './jsonDeptvList.jsp',
+			title : '부서관리',
+			width : 480,
+		    columns:[[
+		        {field:'deptno',title:'부서번호',width:120, align : 'center'},
+		        {field:'dname',title:'부서명',width:120, align : 'center'},
+		        {field:'loc',title:'지역',width:120,align:'center'}
+		    ]],
+		    onDblClickRow: function(index, row){
+		    	alert(row.dname + ", " + row.loc + ", index : " + index);
+		    	location.href = "fetchTest.html";
+		    	//페이지 이동처리 할 때 사용한다. get 방식이다.
+		    	//location도 내장객체이다. 어디론가 이동하고 싶을 때, 새로운 페이지를 부를 때 사용.
+		    }
+		});
+	</script>
+	
+</body>
+</html>

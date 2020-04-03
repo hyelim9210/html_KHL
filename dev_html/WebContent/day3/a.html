@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트의 위치를 확인해보자</title>
+<!-- head 영역 -->
+<!-- 
+전역변수 선언
+함수 선언
+ -->
+ <script type="text/javascript">
+ 	var mem_id = "apple";//전역변수 선언
+ 	function test(){
+ 		alert(mem_id + "test호출 성공");
+ 	}
+ </script>
+</head>
+<body>
+<!-- body 영역 -->
+<!-- 즉시 실행되는 실행문 작성 -->
+<script type="text/javascript">
+	test(); /////////함수 호출
+	document.write("안녕");
+</script>
+</body>
+</html>

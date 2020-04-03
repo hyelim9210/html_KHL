@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>구구단을 만들어보자</title>
+	<script type="text/javascript">
+		function getGugudan(start, end){
+			document.write("<center><h1>구구단</h1><table width = '70%'><tr>");
+			for (var i = start; i <= end; i++) {
+				document.write("<td bgcolor = 'green' width = '80' height = '50' align = 'center'><b>" + i +"단</b></td>")
+				if(i==end) document.write("</tr><tr>");
+			}
+			for (var j = start; j <= end; j++) {
+				document.write("<td bgcolor = 'pink' width = '80' height='50' align = 'center'>");
+				for (var k = 2; k <= 9; k++) {
+					document.write(j, " * " , k, " = ", k*j, "<br>");
+				}
+				document.write("</td>")
+			}
+			document.write("</tr></table></center>");
+		}
+	</script>
+</head>
+<body>
+	<form id="f_gugudan">
+		 구구단 보기 :
+		 시작단 : <input type = "text" size = "4" name = "n_Start"/>
+		 끝단 : <input type = "text" size = "4" name = "n_End"/>
+		<button onClick = "javascript:getGugudan(getElementById('f_gugudan').n_Start.value,	getElementById('f_gugudan').n_End.value)">구구단 보기</button>
+	</form>
+	
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script type="text/javascript">
+		function send(){/*전송자체를 내보내는 건 submit이라는 메소드를 호출하면된다. 어디로 보내질 거니 하는 건 
+			이걸 처리해주는 페이지니까 formAction.html처럼 페이지 정보를 주면 된다.*/
+			document.getElementById("f_login").submit();
+		}
+	</script>
+</head>
+<body>
+	<form id="f_login" method = "get" action = "formAction2.jsp">
+		<input type="text" id="mem_id" name = "mem_id" size="20">
+		<button onClick="send()">전송</button>
+	</form>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+	<style type="text/css">
+		div#d_result {
+			position : absolute; /*  */
+		}
+		.listIn { /* 마우스 오버 했을 때 */
+			background : #CCFFEF;
+		}
+		.listOut { /* 마우스가 빠져나갔을 때 */
+			background : #AEBBEF;
+		}
+	</style>
+	<script type="text/javascript">
+		var word = $("#keyword");
+		var offset = word.offset();
+
+		function account(input){
+			document.write("<table id = 'tbtb'>");
+			for(var i = 0; i < 5; i++){
+				document.write("<tr><td>" + input.value + "_" + i + "</td></tr>");
+			}
+			document.write("</table>");
+			document.getElementById("d_result").innerHTML = "#tbtb";
+		}
+		function showMethod(){
+   				  $("#d_result").css("Left", $("keyword").offset().left + "px" )//absolute 옵션이 있어야 좌표값으로 위치를 변경할 수 있다.
+   				  $("#d_result").css("width", $("keyword").offset().width +"px");	
+   				  $("#d_result").css("Top", $("keyword").offset().top + $("#keyword").offset.height + "px")//absolute 옵션이 있어야 좌표값으로 위치를 변경할 수 있다.
+   				  $("#d_result").css("backgroundColor", "#CCFFFF");
+   				  $("#d_result").css("border", "3px solid #AACC55");
+   				  $("#d_result").html(data);
+			});
+			
+		}
+		function clearMethod(){
+			$("#d_result").css("backgroundColor", "#FFFFFF");
+			$("#d_result").css("border", "none");
+			$("#d_result").html("");
+		}
+	</script>																							
+</head>
+<body>
+	<script type="text/javascript">
+		$(document).ready(function(){//돔 구성이 준비가 되었을 때
+			//$("#d_result").hide();
+		});
+	</script>
+	<div id = "d_result">여기</div>
+	<input type = "text" id = "keyword" name = "name_keyword" onKeyUp = "showMethod()" size = "20">
+	<button onClick = "showMethod();">보여줘</button>
+	<button onClick = "clearMethod();">지워줘</button>
+	<!-- onClick 이벤트에 javascript 코드를 직접 작성할 수 있지만 권장사항은 아니다. -->
+</body>
+</html>

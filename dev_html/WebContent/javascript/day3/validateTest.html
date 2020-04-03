@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>아이디에 한글이 있는지 체크해보자</title>
+	 <script type="text/javascript">
+	 	function validate(p_input){
+	 		var valid = "abcdefghijklmnopqrstuvwxyz0123456789";//유효한 값
+	 		var ok = "yes";//불리언 타입이 따로 없어서 문자열 yes로 저장해둔다.
+	 		var temp;
+	 		if(p_input.value != ""){
+	 		for(var i = 0; i<p_input.value.length; i++){
+	 			temp = ""+p_input.value.substring(i,i+1);////i+1이 아니라 1아닌가
+	 			if(valid.indexOf(temp) == -1){//끝까지 찾았는데 없니? == 유효한 값 목록에 없는거니?
+	 				ok = "no";
+	 			}
+	 		}
+ 			if(ok == "no"){
+ 				alert("영문자와 숫자만 입력할수 있어요.");
+ 				p_input.value="";//p_input를 빈 문자열로 만들어주기
+ 				p_input.focus();//p_input의 포커스 남겨두기
+ 			}
+	 			
+	 		alert(ok);
+	 		}
+	 		else{
+	 		alert("비어있다!")
+	 		break;
+	 		}
+	 	}
+	 	/* <!--
+		 	브라우저가 지원하지 않는 코드는 이 모양으로 주석 처리 해주기
+	 	//--> */
+	 </script>
+</head>
+<body>
+	<form id = "f_login" method = "get" action = "arrayTest.html">
+		아이디 : <input type = "text" id="mem_id" name = "name_id" onblur = "validate(this)">
+		<br>
+		<button onClick = "document.getElementById('f_login').submit();">로그인</button>
+	</form>
+</body>
+</html>

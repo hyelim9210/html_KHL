@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바 스크립트 개요</title>
+	<script type="text/javascript" src = "test.js">
+	//자바스크립트를 내장시키는 방법이다. 반드시 <script>태그를 따로 선언해서 사용해야한다.
+	</script>
+	<script type="text/javascript">
+		document.write("좋은아침");
+		//헤드 안에 있어도 실행되긴 한다. 왜지...
+		//함수에 넣는 게 일반적이다.
+		test();
+	</script>
+</head>
+<body>
+<!-- 
+		***** 학습 목표 *****
+	- html과 자바 스크립트의 역할에 대해 말할 수 있다. (html은 뷰, js는 이벤트, 뷰 조작)
+	- 자바 스크립트의 선언 위치에 대해서 설명할 수 있다.(head, body 위치의 차이, 역할의 차이)
+	- mime type에 대해 이해하고, 페이지에 적절한 mime type을 작성할 수 있다.
+	
+			자바스크립트의 개요
+	- 스크립트 기반의 브라우저 플랫폼에서 동작하는 객체기반 스크립트 언어이다.
+	- 컴파일을 하지 않는다.((대표적으로는)변수가 런타임 시에 결정된다.)
+	- html에 포함된다.
+	- 기본 형식
+		<script type = "text/javascript"> </script>
+	- html 태그의 이벤트 핸들러를 잡자스크립트 코드로 표현할 수 있다.
+		- 자바 스크립트를 적용해서 보다 확장된 html 문서를 작성할 수 있다.
+		- 형식
+			<태그이름 이벤트이름 = "자바스크립트 코드"/>
+	- 더블 쿼테이션과 싱글 쿼테이션을 같이 사용할 수 있다.
+		- 싱글 쿼테이션을 사용할 땐 구분 없이 사용해도 된다.
+			(- 속성의 이름에 값을 줄 때 는 대입 연산자를 사용하는데, 스타일 값을 줄 땐 콜론을 사용한다.)
+		- 값이 올 때는 더블쿼테이션이 오는데 그 값 안에 속성이오면(onMouseOver ="document.bgColor - 'red'") 안쪽이 싱글, 바깥쪽이 더블로 사용하자.
+	- 자바스크립트 코드를 URL로 사용 가능하다.
+	- 자바스크립트 파일을 내장할 수 있다.(test.js 내장)
+		- 반복되는 코드를 줄여준다.
+		- 여러 페이지에서 공통으로 필요한 함수를 구현해서 재사용할 수 있다.
+																	 -->
+	<a href = "http://www.naver.com" onMouseOver = "document.bgColor = 'red'" onMouseOut = "document.bgColor = 'yellow'">네이버</a>
+	<hr><!-- 개행처리 -->
+	<a href = "javascript:document.write('<b>Hello HTML5</b>'));" onMouseOver = "document.bgColor = 'blue'" onMouseOut = "document.bgColor = 'cyan'">네이버</a>
+</body>
+	
+</html>

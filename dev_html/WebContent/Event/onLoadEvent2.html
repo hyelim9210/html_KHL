@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>onLoad 이벤트</title>
+</head>
+<body>
+<!-- 
+	DOM 처리가 Event 처리보다 먼저이다.
+	
+ -->
+ 	<script type="text/javascript">
+ 		window.onload = function(){//function에 이름이 없다. 이게 요즘 트렌드다.
+ 			//익명함수를 선언한 것이다. 그래서 이것은 한 번만 사용할 수 있다.
+ 			//이벤트 연결하기
+ 			//이번트를 어디에 연결할 것인가 >> h1에 연결하자.
+ 			var header = document.getElementById("header");//h1을 가리킨다.
+ 			header.onclick = function(){
+ 				alert("클릭");
+ 				//이 이벤트를 다시 사용하지 않을 생각이라면 이벤트를 제거해준다.
+ 				header.onclick = null;
+ 				//이게 자바에서의 자원반납이라고 생각하면 된다.
+ 				//버블링 발생을 방지시킨다.
+ 				//html은 트리구조를 가지고 있고 서로 상속관계를 가지고 있다.
+ 			}
+ 			
+ 		};
+ 	</script>
+	<h1 id = "header">Click</h1>
+</body>
+</html>

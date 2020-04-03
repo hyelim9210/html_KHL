@@ -1,0 +1,38 @@
+[
+	{
+		lng: 126.781299,
+		res_photo: "shinbokkwan.png",
+		res_name: "신복관 부천점",
+		lat: 37.486515
+	},
+	{
+		lng: 126.781852,
+		res_photo: "onerdak.png",
+		res_name: "오너닭",
+		lat: 37.486477
+	},
+	{
+		lng: 126.780269,
+		res_photo: "odachobap.png",
+		res_name: "오다초밥",
+		lat: 37.48606
+	},
+	{
+		lng: 126.781729,
+		res_photo: "rollingpasta.png",
+		res_name: "롤링파스타 부천역점",
+		lat: 37.485494
+	},
+	{
+		lng: 126.780356,
+		res_photo: "kyeongseong.png",
+		res_name: "경성함바그 부천역점",
+		lat: 37.485246
+	},
+	{
+		lng: 123.156131,
+		res_photo: "test222.png",
+		res_name: "테스트22",
+		lat: 123.415
+	}
+]

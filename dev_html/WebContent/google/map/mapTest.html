@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 80%;
+        width : 80%;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div id="map" width = "800px" height = "650px"></div>
+    <script>
+      var map;
+      var maker;
+      var curLatLng = {lat: 37.478700, lng: 126.878391};
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+        	//월드 메르디앙 2차 위도와 경도 넣기 37.478700, 126.878391
+	      center: curLatLng,
+          zoom: 15//디폴트값 8에서 15로 바꾸었다
+        });
+        marker = new google.maps.Marker({
+        	position: curLatLng,
+        	map : map,
+        	title : '한국소프트웨어인재개발원'
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDsOWnIJzavh5Oc5z9Bo04l6MeLyE4ldXY&callback=initMap"
+    async defer>			//callback 함수는 시스템에서 자동 호출하는 함수이다. 
+    </script>
+  </body>
+</html>

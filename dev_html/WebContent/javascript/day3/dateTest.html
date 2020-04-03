@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Date객체 - 날짜와 시간을 다루는 객체이다.</title>
+	<script type="text/javascript">
+		function showTime(){
+			var today = new Date();
+			var year = today.getYear();
+			var month = today.getMonth();
+			var day = today.getDate();
+			//alert("today : " + today
+			//	+"\nyear : " + year//120이 나오는 이유는 1090을 빼서..?
+			//	+"\nmonth : " + month
+			//	+"\nday : " + day
+			//	);
+			//window.status = //상태바를 가리키는 속성 이름
+			var temp = today.toLocaleString();
+			//window.status = temp; //크롬은 상태바가 없어서 확인을 못 한다. div로 확인해보자
+			document.getElementById("d_msg").innerText = temp;
+		}
+	</script>
+</head>
+<body onLoad = "showTime()"> <!-- body가 onLoad될 때 showTime함수 호출 -->
+	<div id = "d_msg"></div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<style>
+		#div_1 > h1{color : red;} /*꺽새가 있다. 자손선택자이다*/
+		/* 얘는 바로 아래에 있는 애한테만 적용이 된다. */
+		#div_2 h1{color : orange;} /*꺽새가 없다. 후손선택자이다.*/
+		/* 어느 범위까지 적용이 되는 거지? */
+		/*#div_1 .title{background: black;}*/	
+		
+	</style>
+</head>
+<body>
+	<div id = "div_1">
+		<h1 class ="title">네비게이션</h1> 
+		<h1>안녕안녕안녕안녕</h1>
+			<div id = "nav">
+				<h1>Navigation</h1>
+			</div>
+	</div>
+	<div id = "div_2">
+		<h1 class="title">후손 선택자</h1>
+			<div id = "nav">
+				<h1>Navigation</h1>
+				<h1>p태그 연습</h1>
+			</div>
+	</div>
+</body>
+</html>

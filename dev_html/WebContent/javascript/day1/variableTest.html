@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>변수와 초기화</title>
+	<script type="text/javascript">
+	//자바와는 달리, 자바스크립트는 컴파일 하지 않기 때문에 문법체크를 하지 않는다.
+	//head 위치에 있으면 전역변수이지만, head의 함수 안에 있을 경우 지역변수가 된다.
+		var num = 5;
+		var isOk = false;
+		var insa = "좋은 아침";
+		var temp = null;
+		
+		function test(){
+			var num = 7;
+			alert("num : " + num);
+			alert("this.num : " + this.num);
+		}
+	</script>
+</head>
+<body>
+<!-- 
+	* 데이터 타입
+		1. 숫자 타입
+		 - 정수와 실수
+		2. 논리 타입
+		 - true, false
+		3. 문자열 타입
+		 - "_____"
+		4. null
+		 - 특수 키워드(값이 없다.)
+		 - 자바스크립트 초기화 할 때 쓰기도 한다.
+	* 변수
+	 	- 프로그램에서 필요한 data의 저장 공간으로 항상 변하는 값을 기억한다.
+	 	- 숫자로 시작하면 안 된다.
+	 	- 대소문자를 구분한다.
+ -->
+	 <script type="text/javascript">
+	 	alert("num : " + num);
+	 	test();
+	 </script>
+</body>
+</html>

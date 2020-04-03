@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+
+</head>
+<body>
+	 <script type="text/javascript">
+	 //json에서 배열은 [{"배우이름" : "송강호", "나이" : 50, "제목" : "기생충"}] >> 이런식으로 처리한다.
+		var movie = [
+			["첫번째영화", "첫번째감독", "첫번째배우", "첫번째나이"]
+		  , ["두번째영화", "두번째감독", "두번째배우", "두번째나이"]
+		  , ["세번째영화", "세번째감독", "세번째배우", "세번째나이"]
+		];
+		for (var i = 0; i < movie.length; i++) {
+			for (var j = 0; j < movie[0].length; j++) {
+				document.write(movie[i][j], "<br>");
+			}
+			document.write("<br>");
+		}
+	 </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script type="text/javascript" src = "http://code.jquery.com/jquery-3.4.1.js">
+	//이렇게 src 속성을 주면 원격으로 jquery를 이용할 수 있다.
+	</script>
+	<script src= "https://maps.googleapis.com/maps/api/js?key=AIzaSyDsOWnIJzavh5Oc5z9Bo04l6MeLyE4ldXY">	//우리는 콜백함수가 없어서 원래 쓰여있던 것을 다 지웠다.
+    </script>
+</head>
+<body>
+	<div id = "d_map" style="width:800px; height:600px;"></div>
+	<!-- css말고 이렇게 직접 style 속성을 주는 것도 가능하다. -->
+	<script type="text/javascript">
+		var map = new google.maps.Map(document.getElementById('d_map'),{
+			zoom : 15
+		  , center : new google.maps.LatLng(37.484332, 126.782803)
+		  , mapTypeId : google.maps.MapTypeId.ROADMAP
+		  //위성이냐 아니냐 그 아이디 값을 얘기하는 것이다. //ROADMAP이 우리가 보통 보는 지도이다.
+		});
+		var infoWindow = new google.maps.InfoWindow();//구글에서 제공하는 말풍선 API
+		var marker;
+		var i; //마커에 대한 고유 숫자값. 마커 생성시 부여한 인덱스 값이라고 생각하자.(for문 안에서 사용..?)
+		$.ajax({
+			url: 'jsonMapList.jsp'
+		  , dataType : 'json'
+		  , success : function(data){
+			  //$("#d_map").text(data);
+			  //insert here
+			  //값을 가져오는 코드를 추가해보자
+			  var result = JSON.stringify(data);
+			 // $("#d_map").text(result);
+			  //이렇게 하면 데이터들이 출력되는데, 데이터를 그대로 사용할 수 없으니까
+			  //파싱작업을 하자
+			  var jsonDoc = JSON.parse(result);
+			  for(var i=0;i<jsonDoc.length;i++){
+				// alert(jsonDoc[i].res_name);//로우에 대한 속성 값을 읽을 수 있다.
+				  //i가 바뀔 때마다 row가 바뀐다. res_name은 속성 값이다. 해당 로우의 해당 컬럼?
+				marker = new google.maps.Marker({
+					id : i
+				  , position : new google.maps.LatLng(jsonDoc[i].lat, jsonDoc[i].lng)
+				  , map : map
+				  , title : jsonDoc[i].res_name
+				});
+				google.maps.event.addListener(marker, 'click', (function(marker, i){
+					return function(){
+						infoWindow.setContent('<b>'+jsonDoc[i].res_name +'</b>');
+						infoWindow.open(map, marker);
+					}//end of 반환함수
+				})(marker, i));
+				if(marker){
+					//이렇게 쓸 수 있는 근거 : 자바스크립트에서는 0이 아니면 전부 true로 처리한다.
+					marker.addListener('click', function(){
+						map.setZoom(16);//마커를 찍었을 때 확대 되는 느낌을 주기 위해 원래 marker보다 크게 한다.
+						map.setCenter(this.getPosition());
+					});
+				}
+			  }
+		  }
+		});
+	</script>
+</body>
+</html>

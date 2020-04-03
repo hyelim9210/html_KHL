@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+	<style type="text/css">
+		div#d_result {
+			position : absolute; /*  */
+		}
+		.listIn { /* 마우스 오버 했을 때 */
+			background : #CCFFEF;
+		}
+		.listOut { /* 마우스가 빠져나갔을 때 */
+			background : #AEBBEF;
+		}
+	</style>
+	<script type="text/javascript">
+		var word = $("#keyword");
+		var offset = word.offset();
+
+		function account(input){
+			document.write("<table id = 'tbtb'>");
+			for(var i = 0; i < 5; i++){
+				document.write("<tr><td>" + input.value + "_" + i + "</td></tr>");
+			}
+			document.write("</table>");
+			document.getElementById("d_result").innerHTML = "#tbtb";
+		}
+		function showMethod(){
+			$.ajax({
+				method : "get"
+			  , url : "../../json/dept.json"
+			  , dataType : "json"
+			  , success : function(data){//성공을 했을 때
+				  //alert("data : " + data);
+   				  //$("#d_result").html(data);
+   				  var result = JSON.stringify(data);//구조체보여줌
+   				  //alert("result : " + result);
+   				  var jsonDoc = JSON.parse(result);
+   				  alert("jsonDoc : " + jsonDoc[2].loc);
+   				  for(var i=0; i<jsonDoc.length;i++){
+   					  $("#d_result").text(jsonDoc[i].deptno + ", " + jsonDoc[i].dname + ", " + jsonDoc[i].loc);
+   				  }
+			  }
+			  , fail : function(xhrObject, txtStatus){
+				  alert(xhrObject.responseText);//실패할 경우 에러메시지 띄우기
+			  }
+			});
+			
+		}
+		function clearMethod(){
+			$("#d_result").css("backgroundColor", "#FFFFFF");
+			$("#d_result").css("border", "none");
+			$("#d_result").html("");
+		}
+	</script>																							
+</head>
+<body>
+	<script type="text/javascript">
+		$(document).ready(function(){//돔 구성이 준비가 되었을 때
+			//$("#d_result").hide();
+		});
+	</script>
+	<div id = "d_result">여기</div>
+	<input type = "text" id = "keyword" name = "name_keyword" onKeyUp = "showMethod()" size = "20">
+	<button onClick = "showMethod();">보여줘</button>
+	<button onClick = "clearMethod();">지워줘</button>
+	<!-- onClick 이벤트에 javascript 코드를 직접 작성할 수 있지만 권장사항은 아니다. -->
+</body>
+</html>

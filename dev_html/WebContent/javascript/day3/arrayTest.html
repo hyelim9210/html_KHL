@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Array 객체</title>
+</head>
+<body>
+<!--
+여러 개의 데이터를 동시에 참조하고자 할 때 사용하는 객체이다.
+배열 객체명 = new Array();
+배열 객체명 = new Array(5);//배열의 크기를 정해주려면 ()안에 크기를 넣어주면 된다.
+ -->
+	<script type="text/javascript">
+		var myCar = new Array(3);
+		myCar[0] = "소나타";
+		myCar[1] = "티볼리";
+		myCar[2] = "QM3";
+		for(var i=0; i<myCar.length; i++){
+			document.write("<li>"+myCar[i]+"</li>");
+ 		}
+		document.write("<hr>");
+		var myPet = new Array("강아지", "고양이", "고슴도치");
+		for(i=0; i<myPet.length; i++){
+			document.write("<li>"+myPet[i]+"</li>");
+		}
+		document.write("<hr>");
+		document.write("[join]");
+		var myArray = myCar.join(myPet);
+		for(i=0; i<myArray.length;i++){
+			document.write("<li>" + myArray[i] + "</li><br>");
+		}
+		document.write("<hr>");
+		document.write("[concat]");
+		var myArray2 = myCar.concat(myPet);
+		document.write("<hr>");
+		
+		for(i=0; i<myArray2.length;i++){
+			document.write("<li>" + myArray2[i] + "</li>");
+		}
+		document.write("<hr>");
+		document.write("[slice]<br>");
+		document.write(myArray.slice(1,3)+"</br>")
+		document.write("<hr>");
+		document.write("[sort]<br>");
+		document.write(myArray.sort()+"</br>")
+		
+	</script>
+</body>
+</html>

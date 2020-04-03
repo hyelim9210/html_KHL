@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>html 태그와 자바스크립트 만나게 해보자</title>
+<!-- innerHTML, innerText, h1태그, button -->
+	<script type="text/javascript">
+		function confirm(){
+		var v_msg = document.getElementById("d_msg");
+		/* v_msg.innerText="after v_msg : " + v_msg; */
+		 v_msg.innerHTML = "<font color='red'><h1>after</h1></font> v_msg:" + v_msg;
+		/* _msg.innerText = "<font color='red'><h1>after</h1></font> v_msg:" + v_msg; */
+		}
+	</script>
+</head>
+<body>
+<!-- 	<script type="text/javascript">
+	//순서대로 읽는다고 가정했을 때 d_msg라는 아이디는 여기서 읽지 못할 것이다.
+	//before
+		var v_msg = document.getElementById("d_msg");
+		/* document.write(v_msg); */
+		console.log("v_msg : " + v_msg); //로그를 찍는 함수이다.
+		//여기서 undefine이 떨어지면 이 위치에서는 d_msg를 읽지 못하는 것이다.
+		</script> -->
+	<div id = "d_msg">당신의 아이디를 입력하세요.[안내]</div> <!--  아이디를 주었다. 그래서 이 아이디에 접근할 수 있다. -->
+	<script type="text/javascript">
+	//after
+		/* var v_msg = document.getElementById("d_msg"); */
+		/* document.write(v_msg); */
+		/* v_msg.innerText="after v_msg : " + v_msg; */
+		/* console.log("v_msg : " + v_msg); //로그를 찍는 함수이다. */
+	</script>
+	<button onClick = "confirm()">확인</button> <!-- 확인이라는 버튼을 만들고 onClick 하면 confirm()함수 실행 -->
+</body>
+</html>

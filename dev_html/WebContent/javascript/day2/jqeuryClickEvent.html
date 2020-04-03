@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script type="text/javascript" src = "https://code.jquery.com/jquery-1.9.1.js"></script>
+	<style type="text/css">
+		* {margin: 0px; padding:0px;}
+		div {
+			margin: 5px; padding: 3px;
+			border: 3px solid black;
+			border-radius: 10px;
+		}
+	</style>
+</head>
+<body>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			//이벤트 연결하기
+			$('div').click(function(){//onClick에서 on만 빼면 표준이벤트와 동일하다
+				//변수 선언
+				var header = $(this).find('h1').text();//Header1
+				var paragraph = $(this).find('p').text();
+				alert(header + '\n' + paragraph);
+			});
+		});
+	</script>
+	<div>
+		<h1>Header 1</h1>
+		<p>Paragraph</p>
+	</div>
+	<div>
+		<h1>Header 2</h1>
+		<p>Paragraph</p>
+	</div>
+	<div>
+		<h1>Header 3</h1>
+		<p>Paragraph</p>
+	</div>
+</body>
+</html>

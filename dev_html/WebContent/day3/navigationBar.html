@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="https://fonts.googleapis.com/css?family=Handlee&display=swap"
+	   rel="stylesheet">
+	<style type="text/css">
+		body {font-family: 'Times New Roman', 'serif';} /* 바디영역에 들어갈 글꼴, 없으면 두 번째 걸로 */
+		li {list-style: none;} /* 리스트의 구슬 없애준다. */
+		a {text-decoration: none;} /* 밑줄을 없애준다. */
+		#main_globalNB > ul > li > a {
+			color : pink; /* 글자색 */
+			border: 1px solid black;/* solid 평면 */
+			display : inline;			
+			}
+		#main_globalNB > ul > li > a:hover { /* 마우스 올렸을 때 */
+			background: black;
+			color : white;
+		}
+		#main_globalNB > ul > li {
+			float : right; /* 목록을 한 줄로 해준다. */
+		}
+		#main_header > #title {
+			position: absolute; /* 좌표값으로 위치를 잡아주겠다는 말이다. */
+			left: 20px;
+			top: 30px;
+		}
+		#main_header > #title {
+			position: absolute; /* 좌표값으로 위치를 잡아주겠다는 말이다. */
+			left: 0px;
+			top: 0px;
+		}
+		/* 자손 선택자에서 아이디가 없는 태그를 직접 접근하려면 어떡하지 */
+		
+	</style>
+	<!-- title 선택자에만 웹에서 가져온 폰트를 적용시키고 싶다. 어떻게 해야할까? -->
+	<style type="text/css"> /* style태그 하나에 다 적어도 되지만 이렇게 적는 게 보기 좋다. */
+		#title {
+			font-family: 'Handlee', cursive;/* 이게 속성의 값이니까 안쪽에 들어가야 한다. */
+		}
+	</style>
+</head>
+<body>
+	<header id = "main_header">
+		<div id = "title"><h1>네비게이션 바<(HTML5 + CSS3 Basic)/h1></div>
+			<nav id = "main_globalNB">
+				<ul>
+					<li><a href = "#">Java 수업</a></li>
+					<li><a href = "#">Oracle 수업</a></li>
+					<li><a href = "#">HTML 수업</a></li>
+				</ul>
+			</nav>
+	</header>
+</body>
+</html>

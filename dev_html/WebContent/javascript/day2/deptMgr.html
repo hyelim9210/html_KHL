@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>부서관리-이차배열을연습해보자</title>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+	    <script type="text/javascript" src="https://www.jeasyui.com/easyui/jquery.easyui.min.js"></script>
+	    <link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/themes/default/easyui.css">
+	    <script type="text/javascript" src="../../js/jquery.min.js"></script>
+	    <script type="text/javascript" src="../../js/jquery.easyui.min.js"></script>
+</head>
+<body>
+	<table id="dg"></table>
+	<script type="text/javascript">
+		$('#dg').datagrid({
+			title : '부서관리',//원래는 table 태그에서 title = ""하는 건데 datagrid에서는 이렇게 할 수 있다.
+		    url:'deptInfo.jsp',//확장자가 json, jsp, java(그냥자바가아니라 서블릿 자바)인 파일들이 올 수 있다. 
+		    columns:[[
+		        {field:'DEPTNO',title:'부서번호',width:100, align: 'center'},
+		        {field:'DNAME',title:'부서명',width:100, align: 'center'},
+		        {field:'LOC',title:'지역',width:100, align: 'center'},
+		    ]],		//valign일 때는 top, center, bottom?
+		    onLoadSuccess:function(data){
+				alert("성공");
+			},
+			onDblClickCell: function(index,field,value){
+				alert("[onDblClickCell] index : " + index + ", field : " + field + ", value : " + value);//field는 위의 field를 나타냄. code, name
+			},
+			onDblClickRow: function(index, row){
+				alert("[onDblClickRow] index : " + index + ", row : " + row.DNAME);
+			}
+		//    ,
+	    //	data: [
+	    //		{code:'value11', name:'value12'},
+	    //		{code:'value21', name:'value22'}
+	    //	]
+		});
+	</script>
+</body>
+</html>

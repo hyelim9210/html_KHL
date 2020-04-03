@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- 
+	fetch API를 이용하면 요청(Request)나 응답(Respones)와 같은 HTTP(웹 통신에 필요한 프로토콜)의
+	통신을 구성하는 요소(파이프라인)을 구성하는 요소를 조작하는 것이 가능해진다.
+	이 경우에는, 비동기 통신을 구현할 수 있다. 
+	오브젝트로 가져온다. 오브젝트로 가져오는 것은 우리가 원하는 결과가 아니다. 그래서
+	배열을 사용한다. 제이슨에 있는 값을 꺼내서 화면에 사용할 때는 parse, stringify 함수가
+	꼭 필요하다.
+ -->
+	<script type="text/javascript">
+		var result = '';
+		fetch('./jsonDeptList.jsp')
+		.then(function(response){
+			return response.json();
+		})
+		.then(function(myJson){
+			//console.log(JSON.stringify(myJson));
+			result = JSON.stringify(myJson);
+			jsonDoc = JSON.parse(result);
+			document.getElementById("d_here").innerText = jsonDoc;
+			var temp ='';
+			temp += "<p>";
+			for(var i = 0; i<jsonDoc.length;i++){
+				//alert(jsonDoc[i].dname + ", " + jsonDoc[i].loc);
+				temp +="<h1>" + jsonDoc[i].dname + "</h1>";
+			}
+			temp += "</p>";
+			//document.getElementById("d_here").innerTEXT = temp;
+			//위의 코드로 실행하면 [object Object]... 이렇게 나온다.
+			document.getElementById("d_here").innerHTML = temp;
+			//카카오의 지도나 구글지도 이런 걸 사용하고 싶으면 이 코드가 꼭 필요하다.
+			//json을 가져와서 화면에 내보내는 것
+		});
+	</script>
+	<div id="d_here"></div>
+</body>
+</html>

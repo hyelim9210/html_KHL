@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script type="text/javascript" src = "https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript">
+		var jquery = jQuery.noConflict();
+	</script>
+	<script type="text/javascript" src = "https://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript">
+		j1 = jQeury.noConflict(); //j1을 붙이면 1.9.1에서 가져온다.
+		//////
+		//버전 다르게 2개 이상 사용하고 싶을 때 이렇게 alias명 부여해서 사용하기
+	</script>
+	<style type="text/css">
+		.high-Light-0{background: yellow;}
+		.high-Light-1{background: orange;}
+		.high-Light-2{background: blue;}
+		.high-Light-3{background: green;}
+		.high-Light-4{background: red;}
+		.high-Light-5{background: pink;}
+	</style>
+</head>
+<body>
+	<h1>item - 0</h1>
+	<h1>item - 1</h1>
+	<h1>item - 2</h1>
+	<h1>item - 3</h1>
+	<h1>item - 4</h1>
+	<h1>item - 5</h1>
+	<script type="text/javascript">
+	jquery(document).ready(function(){
+		jquery('h1').each(function(index, item){
+			jquery(this).addClass('high-Light-'+ index);
+			});
+		});
+	</script>
+	<input type="text" id="mem_id" name = "tomato">
+	<script type="text/javascript">
+		alert(j1('#mam_id').val());
+	</script>
+</body>
+</html>

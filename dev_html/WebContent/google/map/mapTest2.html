@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 80%;
+        width : 80%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+   <script>
+      var map;
+      var maker;
+      var curLatLng = {lat: 37.478700, lng: 126.878391};
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+        	//월드 메르디앙 2차 위도와 경도 넣기 37.478700, 126.878391
+	      center: curLatLng,
+          zoom: 15//디폴트값 8에서 15로 바꾸었다
+        });
+        marker = new google.maps.Marker({
+        	position: curLatLng,
+        	map : map,
+        	title : '한국소프트웨어인재개발원'
+        });
+        var sample = "<div><h2>교육센터위치</h2><p>내용처리</p><a href = 'http://www.naver.com'>링크</a></div>"
+        infoWindow = new google.maps.InfoWindow({
+        	//infoWindow : 말풍선
+        	content : sample
+          , maxWidth : 300
+        });
+        //addListener(instance, eventName, eventHandler)
+        //instance : 누구에게 걸 것인지 , eventHandler : 처리함수 구현
+        google.maps.event.addListener(marker, 'click', function(){
+        	//구글에서 제공하는 addListener 사용, marker에 이벤트를 걸 것이다. click할 때, 익명함수 이벤트를 걸어주자
+        	infoWindow.open(map,marker);
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDsOWnIJzavh5Oc5z9Bo04l6MeLyE4ldXY&callback=initMap"
+    async defer>		//callback 함수는 시스템에서 자동 호출하는 함수이다. 
+    </script>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script type="text/javascript">
+		function check(p_input){
+			if(p_input.value.length > 4){
+				alert("4글자만 입력 가능합니다.");
+			}
+			else{
+				alert("입력되었습니다.");
+			}
+		}
+		function check2(sel){
+			alert("당신이 선택한 메뉴는 " + sel.value + "입니다.");
+		}
+	</script>		
+</head>
+<body>
+<!-- 
+	select, text, textarea 등에서 객체의 내용을 변경한 후 포커스를 잃을 때 호출된다.
+	최대 입력 가능한 글자 수를 4글자로 제한을 두었을 때..
+	
+ -->
+ onChange : <input type = "text" id = "mem_name" name = "name" size = "20" onchange = "check(this)">
+ onKeyUp : <input type = "text" id = "mem_name" name = "name" size = "20" onKeyUp = "check(this)">
+ <select id = "menu" name = "name_menu" onChange = "check2(this)"><!-- ??는 select 객체가 되고 this는 text 객체가 된다. -->
+ 	<option value = "김밥">김밥</option> <!-- 실제 값은 value 값이다..?! -->
+ 	<option value = "떡볶이">떡볶이</option>
+ 	<option value = "돈까스">돈까스</option>
+ 	<option value = "냉면">냉면</option>
+ 	<option value = "된장찌개">된장찌개</option>
+ </select>
+	
+</body>
+</html>

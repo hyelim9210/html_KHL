@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>onLoad 이벤트</title>
+</head>
+<body>
+<!-- 
+	DOM 처리가 Event 처리보다 먼저이다.
+	
+ -->
+ 	<script type="text/javascript">
+		var be = document.getElementById("header");
+		alert("before ==> " + be);
+ 	</script>
+	<h1 id = "header">Click</h1>
+ 	<script type="text/javascript">
+		var af = document.getElementById("header");
+		alert("after ==> " + af);
+		//여기서 html 오브젝트 값을 가지고 있다. 이 값을 가지고 있어야 접근할 수 있다.
+ 	</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Dom 생성하기</title>
+</head>
+<body>
+	<script type="text/javascript">
+		window.onload = function(){
+			var header = docment.createElement("h1");
+			var textNode = document.createTextNode("Hello DOM!!");
+			//노드를 생성했으니까 이제 노드를 연결하자.
+			header.appendChile(textNode);
+			//화면에 보여주려면 body에 넣어야한다.
+			//태그를 쓰지 않아도 태그를 쓴 것과 같은 효과를 볼 수 있다.
+			document.body.appendChile(header);
+		}
+	</script>
+	<h2>오늘의 날씨</h2>
+</body>
+</html>

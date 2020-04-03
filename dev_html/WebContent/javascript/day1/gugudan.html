@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>구구단 출력하기</title>
+</head>
+<body>
+	<h3>구구단 출력 프로그램</h3>
+	<script type="text/javascript">
+		var dap = new Array();//자바스크립트에서도 배열을 사용할 수 있다. 파라미터로 크기를 지정한다.
+		var dan = prompt("몇 단을 출력하시겠습니까?", 2);//입력이 없을 경우 디폴트 값으로 2 설정
+		for(var i = 1; i<=9; i++){
+			dap[i] = dan*i;
+			document.write(dan, " * ", i, " = ", dap[i], "<br>");//+연산자 대신에 콤마를 사용할 수 있다.
+		}
+	</script>
+</body>
+</html>
