@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<style type="text/css">
+		.grid {
+			width: 500px;
+			background-color : pink;
+			margin: 100px;
+		}
+		.grid-item {
+			width: 100px;
+			height: 100px;
+			background-color: yellow;
+			display: inline-block;
+			/* 블럭은 무조건 줄바꿈 inline은 줄 바꿈 안 하고 오른쪽으로 일렬로 정렬한다.
+			inline-block은 width와 height값을 맞추면서 일렬로 정렬한다.
+			만일 폭을 넘어서면 다음줄로 넘어간다. */
+			/* vertical-align: top; */
+		}
+		.grid-item.a {background-color: orange;}
+		.grid-item.b {background-color: red;}
+		.grid-item.c {background-color: blue;}
+		.grid-item.d {background-color: purple;}
+		.grid-item.e {background-color: skyblue;}
+		.grid-item.f {background-color: lightgray;}
+	</style>
+</head>
+<body>
+	<div class = "grid">
+		<div class = "grid-item a"></div>
+		<div class = "grid-item b"></div>
+		<div class = "grid-item c"></div>
+		<div class = "grid-item d"></div>
+		<div class = "grid-item e"></div>
+		<div class = "grid-item f"></div>
+	</div>
+</body>
+</html>

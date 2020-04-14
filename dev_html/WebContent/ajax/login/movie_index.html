@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>부분갱신처리-ajax활용실습</title>
+<!-- 
+	jquery API, easyui API, cookie or css API가 필요하다.
+	평소에 jquery 3.4.1버전을 쓰다가 easyui와 같이 할 때 1,9,1버전을 쓰는 이유는 안정성이다. 충돌을 우려해서
+	안정된 버전을 사용하는 것이다.
+ -->
+ 	<link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/themes/color.css">
+    <link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/demo/demo.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="https://www.jeasyui.com/easyui/jquery.easyui.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+	<!-- 의존관계에 있기 때문에 순서를 지켜야 한다. jquery - easyui - cookie 순으로 -->
+	<!-- import 한 후에는 실행을 시켜서 개발자 도구를 확인하고, import한 내용들이 모두 200번으로 처리되었는지 확인하기 -->
+	<style type="text/css">
+		#d_login {
+			border: 1px solid #CCCCCC;
+			background: pink;
+			width: 220px;
+			height: 90px;
+		}
+		#d_logout {
+			border: 1px solid #CCCCCC;
+			background: skyblue;
+			width: 220px;
+			height: 70px;
+		}
+	</style>
+	<script type="text/javascript">
+		function login(){
+			//location.href = "movie_index.html?u_id="+$('#u_id').val()+"&u_pw="+$("#u_pw").val();
+			$("d_login").hide();
+			$("d_logout").append("아이디 : " + $('#u_id').val());
+			$("d_logout").show();
+		}
+	</script>
+</head>
+<body>
+	<div id = "lay_movie" class = "easyui-layout" style = 'width: 900px; height: 500px;'">
+			<!-- =======================메뉴 트리 구성========================= -->
+		<div data-options="region:'west',title:'코딩놀이',split:true" style="width:300px;">
+			<div name = "margin" style ="margin:10px;"></div>
+			<!-- =============== 로그인 전 ================= -->
+				<!-- ===========로그인 영역========== -->
+				<div id = "d_login" align = "center">
+					<input id = "u_id" class="easyui-textbox" style="width:200px">
+					<input id="u_pw" class="easyui-passwordbox" prompt="Password" iconWidth="28" style="width:200px;height:34px;padding:10px">
+				</div>
+				<div style = "margin : 3px 0;"></div>
+					<script type="text/javascript">
+						$('#u_id').textbox({
+						    iconCls:'icon-man',
+						    iconAlign:'right',
+						    prompt:'아이디'
+						});
+					</script>
+			<button id = "btn_login" onClick = "login()">로그인</button>
+			<button id = "btn_signup" onClick = "signup">회원가입</button>
+				<!-- ===========로그아웃 영역========== -->
+				<div id = "d_logout" align = "center">
+				
+				</div>
+		</div>
+			<!-- =============== 로그인 후 ================= -->
+			<!-- =======================메뉴 선택에 따른 내용========================= -->
+	    <div data-options="region:'center',title:'영화예매 시스템'" style="padding:5px;background:#eee;"></div>	
+    </div>
+    <script type="text/javascript">
+    	$(document).ready(function(){
+    		$("#d_logout").hide();
+    	});
+    </script>
+</body>
+</html>

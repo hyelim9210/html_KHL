@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src = "http://code.jquery.com/jquery-3.4.1.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+</head>
+<body>
+<button id="btn_make">쿠키생성</button>&nbsp;
+<button id="btn_delete">쿠키삭제</button>&nbsp;
+<button id="btn_move">페이지이동</button>&nbsp;
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#btn_make").click(function (){
+			$.cookie('c_id', 'tomato');//이게 쿠키 생생을 하는 것이다. 여기서 쿠기 생성이 되었다.
+			$.cookie('c_name', '김유신'
+				  , {expire:7, path:'/', domain:'localhost', secure:false}		
+			);
+		});
+		$("#btn_move").click(function(){
+			location.href = 'nextMove.html';
+		});
+	});
+</script>
+</body>
+</html>

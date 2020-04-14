@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>클릭하면 해당 문서 객체와 관련된 모든 이벤트 제거하기</title>
+<script type="text/javascript" src = "http://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+	<h1>안녕</h1>
+	<h1>반가워</h1>
+	<h1>구래구래</h1>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			//alert("DOM 구성이 완료 됨.");
+			$('h1').click(function(){
+				alert("ㅎㅎㅎ");
+				$(this).html('<h6>클릭</h6>');
+				//html() : innerHTML과 같다. 태그는 인터프리터 되고, 내용만 출력한다.
+				//text() : innerText와 같다. 텍스트로 처리한다.
+				//html(), text() 둘 다 ajax에서 굉장히 많이 사용된다.
+				$(this).off();//해당 문서 객체와 관련된 모든 이벤트 제거
+				//alert로 확인할 수 있다. 처음엔 alert창이 뜨고, 한 번 클릭하고
+				//나면 off() 때문에 이벤트가 지워졌기 때문에 alert창이 안 뜬다.
+				
+			})
+		});
+	</script>
+</body>
+</html>

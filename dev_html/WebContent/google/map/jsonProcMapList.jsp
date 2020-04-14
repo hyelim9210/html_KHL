@@ -7,7 +7,7 @@
  <%
  	//스크립틀릿 - 자바코드를 쓸 수 있는 땅이다.
  	RestaurantDao rDao = new RestaurantDao();
- 	List<Map<String, Object>> mrList = rDao.procRestList();
+ 	List<Map<String, Object>> mrList = rDao.mapRestList();
  	Gson g = new Gson();
  	String imsi = g.toJson(mrList);
  	out.print(imsi);

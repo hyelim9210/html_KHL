@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>클릭하면 해당 문서 객체와 관련된 모든 이벤트 제거하기</title>
+<script type="text/javascript" src = "http://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+	<h1>안녕</h1>
+	<h1>반가워</h1>
+	<h1>구래구래</h1>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			//똑같은 속성에 대해 이벤트가 두 개 걸려있을 때 특정한 하나만 제고 하고 싶을 때
+			$('h1').dblclick(function(){
+				alert('더블클릭 이벤트 감지');
+			});
+			$('h1').click(function(){
+				alert('클릭 이벤트 감지');
+				$(this).html('<h6>클릭</h6>');
+				$(this).off('click');//해당 문서 객체와 관련된 모든 이벤트 제거
+				//off('제거하려는 이벤트명')
+			});
+		});
+	</script>
+</body>
+</html>

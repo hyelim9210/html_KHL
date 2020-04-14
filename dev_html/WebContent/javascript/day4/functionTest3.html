@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script type="text/javascript">
+	//함수의 리턴 타입이 변수가 아니라, 또 다른 함수일 때 어떻게 동작하는지 확인해보자
+		function methodA(a){
+			return function(){
+				document.write("methodA의 return : " + a);
+			}//end of return function
+		}//////end of methodA
+		//함수의 리턴타입이 함수일 때 아래와 같은 코드가 가능해진다.
+		methodA(5)();
+		//methodA(5)만 실행시켰을 때는 출력문이 나오지 않는다.
+	</script>
+</body>
+</html>

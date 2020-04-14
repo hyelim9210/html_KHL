@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script type="text/javascript">
+	//함수의 리턴 타입이 변수가 아니라, 또 다른 함수일 때 어떻게 동작하는지 확인해보자
+	//함수에 대응하는 변수를 정의해주고, 함수를 끝낼 때 그 변수로 return 해주기
+		function methodA(a){
+			var output = function(){
+				document.write("methodA의 return : " + a);
+			}//end of return function
+			return output;
+		}//////end of methodA
+		methodA(15)();
+		//이렇게 변수로 받은 다음에 처리하는 것도 가능하다는 것을 볼 수 있다.
+		//여기서 중요한 것은 함수의 리턴이 함수인 것이 가능하다는 것이다.
+	</script>
+</body>
+</html>

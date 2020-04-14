@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src = "http://code.jquery.com/jquery-3.4.1.js"></script>
+ 	<script type="text/javascript">
+ 		var xhrObject = null;//변수 선언
+ 		function createRequest(){
+ 			try{
+ 				//인터넷 익스플로러 8.0이상, 사파리, 오페라, 크롬, 파이어폭스는 여기서 생성
+				xhrObject = new XMLHttpRequest();//비동기 통신 객체?
+ 			} catch(trymicrosoft) {//마이크로소프트일 경우 이 catch문으로 들어감. IE6.0이하?
+ 				try {
+				xhrObject = new ActiveObject("Msxml2.XMLHTTP");
+				//여기보다 상위 try문에 해당이 안 될 경우 ActiveObject로 생성한다.
+ 				} catch(e){
+ 					xhrObject = null;
+ 				}
+ 			}
+ 			if(xhrObject == null){
+ 				alert("비동기 객체 생성 에러");
+ 			}
+ 		}
+ 	</script>
+	<style type="text/css">
+		body {
+			font-famliy: sans-serif;
+			text-align: center;
+		}
+		table {
+			border: 1px solid black;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		th, td {
+			border: 1px dotted gray;
+			text-align: center;
+		}
+		th {
+			background-color: skyblue;
+		}
+	</style>
+	<script type="text/javascript">
+		function getBoardSold(){
+		//	alert("getBoardSold 호출 성공");
+			$.ajax({
+				url : "boardAction.jsp"
+			  , method : "get"
+			  , dataType : "text"
+			  , success : function(data){
+				//  alert("data : " + data);
+				  $("#boardSold").text(data);
+				  var price = $("#price").text();
+				  var cost = $("#cost").text();
+				  var perMargin = price - cost;
+				  $("#cash").text(perMargin*data);
+				  //이 아디의 텍스르를     이걸로 만들어준다.
+			    }
+			  , error : function(xhrObject){//xhrObject == XMLHttpRequest
+				  //alert(xhrObject.responseText);
+			  		document.write(xhrObject.responseText);
+			    }
+			});
+		}
+	</script>
+</head>
+<body>
+	<h2>보드 판매량</h2>
+	<table width = "300px" height = "80px">
+		<tr>
+			<th width="120px">보드 판매량</th><td width = "180px"><span id="boardSold">10</span></td>
+		<tr>
+		<tr>
+			<th>구매가</th><td><span id="cost">100</span>원</td>
+		<tr>
+		<tr>
+			<th>소비자가</th><td><span id="price">120</span>원</td>
+		<tr>
+	</table>
+	<h2>마진금액 : <span id="cash">0</span>원</h2>
+	<button onClick="getBoardSold()">마진</button>
+</body>
+</html>

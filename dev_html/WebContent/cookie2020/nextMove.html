@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>nextMove</title>
+<script type="text/javascript" src = "http://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<style type="text/css">
+	#d_cookie {
+		border: 1px solid black;
+		background: pink;
+		width: 500px;
+		height: 150px;
+	}
+</style>
+</head>
+<body>
+<script type="text/javascript">
+	$(document).ready(function(){
+		var c_id = $.cookie("c_id");
+		var c_pw = $.cookie("c_pw");
+		var c_name = $.cookie("c_name");
+		$("#d_cookie").append("<br>" + c_id );
+		$("#d_cookie").append("<br>" + c_pw);
+		$("#d_cookie").append("<br>" + c_name);
+	});
+</script>
+<div id = "d_cookie">쿠키 정보 전광판</div>
+</body>
+</html>

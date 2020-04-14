@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src = "http://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+	<a href = "http://www.ikosmo.co.kr">한국소프트인재개발원</a>
+	<!-- 
+	html에서 a 태그나 submit 태그는 고유한 동작이 있다.
+	그러한 고유 동작을 중지시키는 함수가 preventDefault()이다. 
+	주의사항 : 브라우저가 제공하는 내장객체는 전부 인스턴스화 없이 즉시 사용 가능하다.
+	 -->
+	 <script type="text/javascript">
+	 	$("a").click(function(e){//e는 이벤트 객체를 가리킨다. 여기서는 a인가..
+	 		e.preventDefault()
+	 		alert("페이지 이동!");
+	 		//a태그를 클릭하면 페이지가 이동 되는데
+	 		//그것을 e.preventDefualt() 처리하면 그 동작이 사라진다.
+	 	})
+	 </script>
+</body>
+</html>

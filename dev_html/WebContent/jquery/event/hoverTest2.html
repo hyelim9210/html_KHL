@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>hover 이벤트</title>
+	<style type="text/css">
+		.reverse{
+			background: black;
+			color: white;
+		}
+	</style>
+	<script type="text/javascript" src = "http://code.jquery.com/jquery-1.10.2.js"></script>
+	
+</head>
+<body>
+	<h1>안녕</h1>
+	<h1>반가워</h1>
+	<h1>구래구래</h1>
+	<script type="text/javascript">
+		//돔 구성이 완료 되고 나면 script를 선언하는 게 더 안전하다..?
+		//h1 태그가 인지되어야 하니까.
+		//document는 내장객체. 이건 브라우저가 지원한다.
+		//$(document).ready();//dom구성이 준비가 되었을 때
+		$(document).ready(
+				function(){
+			//이벤트를 연결해보자
+			//하나가 아니라 세개다
+			//$('h1')//h1에 아이디가 있다면 그 아이디를 적어주면 되는데,
+				//해당 아이디를 가진 태그에만 적용된다.
+			$('h1').hover(
+				function(){$(this).addClass('reverse');}
+			  , function(){$(this).removeClass('reverse');
+			});
+		});
+		
+	</script>
+</body>
+</html>

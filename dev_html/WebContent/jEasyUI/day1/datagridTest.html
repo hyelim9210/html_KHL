@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/themes/color.css">
+    <link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/demo/demo.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="https://www.jeasyui.com/easyui/jquery.easyui.min.js"></script>
+
+</head>
+<body>
+	<table id = "dg_member" class="easyui-datagrid">
+	</table>
+	<script type="text/javascript">
+		$(document).ready(function (){
+			$("#dg_member").datagrid({
+				url : "../../json/dept.json"
+				//여기서 가져온 게 data가 된다....?
+			  , title : "회원관리"
+			  , width : 700
+			  , height : 500
+			  , columns:[[
+				    {field:'deptno',title:'deptno'}
+				  , {field:'loc',title:'loc'}
+				]]
+			  , data : [//datagrid에 출력될 값(상수값)
+				  {deptno:'value1', loc:'value12'}
+				, {deptno:'value2', loc:'value22'}
+			    ]
+			  , onDblClickRow : function(index, row){
+				  //여기서 인덱스 값과 로우 값을 확인할 수 있다.
+				  alert("index : " + index + ", row : " + row.loc);
+			  }
+			  , onLoadSuccess : function(data){
+				  alert("data")
+			  }
+			});
+		});
+	</script>
+</body>
+</html>

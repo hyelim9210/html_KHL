@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script type="text/javascript">
+		function checkAll(size){//select * from 테이블명 >> list.size() > 결론적으로 로우의 수이다.
+	//		alert("checkAll 호출!\nsize : " + size);
+			if(document.f_rev.i_checkall.checked == 1){//전체 체크박스를 선택 했을 때
+				//document에 f_rev에 있는 i_checkall이 체크 되었는지가 1이라면
+		//		alert("전체 선택함");
+				for(i=0;i<size;i++){
+					document.f_rev.name_from1.checked=1;
+				}
+			}
+			else{//전체 체크박스를 해제 했을 때
+		//		alert("전체 해제함");
+				for(i=0;i<size;i++){
+					document.f_rev.name_from1.checked=0;
+				}
+			}
+		} 
+	</script>
+</head>
+<body>
+	<form name = "f_rev" method = "get" action = "#">
+		<table borderColor = "green" border = "1" width = "300px">
+			<!-- ======================헤더영역====================== --->
+			<tr>								<!-- 임의로 데이터 3건을추가했으므로 데이터가 3개라는 의미로 파라미터에 3을 넣었다. -->
+				<th><input type = "checkbox" id = "i_checkall" name = "name_checkall" onClick = "checkAll(3)">
+				</th>
+				<th>no</th>
+				<th>보낸이</th>
+				<th>보낸일자</th>
+			</tr>
+			<!-- ======================바디영역====================== --->
+			<tr>
+				<th><input type = "checkbox" id = "name_from" name = "from1" value = "from1"></th>
+				<td>1</td>
+				<td>아이유</td>
+				<td>2020-04-07</td>
+			</tr>
+			<tr>
+				<th><input type = "checkbox" name = "name_from" value = "from2"></th>
+				<td>2</td>
+				<td>이휘재</td>
+				<td>2020-04-08</td>
+			</tr>
+			<tr>
+				<th><input type = "checkbox" name = "name_from" value = "from3"></th>
+				<td>3</td>
+				<td>유재석</td>
+				<td>2020-04-09</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

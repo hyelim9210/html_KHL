@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function test(){
+			alert("test호출");
+		}
+		(function(){
+			document.write("실행문");
+		})();
+	test();
+	</script>
+	<!-- 원래 자바스크립트의 함수인 test를 사용하려면 자바스크립트 안에 와야한다.
+	하지만 브라우저에서는 이걸 컴파일 하지 않고, 런타임 때 결정되기 때문에 
+	함수가 처리될 수도 있고, 처리되지 않을 수도 있다.
+	함수로 처리되지 않는다면 그냥 문자열로 인식되기 때문에 함수를 처리하려면 스크립트 태그
+	안쪽으로 작성해야 한다.
+	 -->
+</body>
+</html>

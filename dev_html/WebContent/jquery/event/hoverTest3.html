@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>hover 이벤트</title>
+	<style type="text/css">
+		.reverse{
+			background: black;
+			color: white;
+		}
+	</style>
+	<script type="text/javascript" src = "http://code.jquery.com/jquery-1.10.2.js"></script>
+	
+</head>
+<body>
+	<h1>안녕</h1>
+	<h1>반가워</h1>
+	<h1>구래구래</h1>
+	<script type="text/javascript">
+		//돔 구성이 완료 되고 나면 script를 선언하는 게 더 안전하다..?
+		//h1 태그가 인지되어야 하니까.
+		//document는 내장객체. 이건 브라우저가 지원한다.
+		//$(document).ready();//dom구성이 준비가 되었을 때
+		$(document).ready(function(){
+			//on을 쓰면 뭐라고.........?....?
+					//파라미터에 이벤트와 이름을 함께 전달..?
+			$('h1').on('click', function(){
+				$(this).html(function(index, html){
+					return html + '&';
+				});
+			});
+			$('h1').on({
+				mouseenter: function(){$(this).addClass('reverse');}	
+		 	  , mouseleave: function(){$(this).removeClass('reverse');}	
+			});
+		});
+		
+	</script>
+</body>
+</html>

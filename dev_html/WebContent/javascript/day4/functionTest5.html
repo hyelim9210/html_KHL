@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function methodA(a){
+		//함수의 리턴 타입이 함수일 때는 이런 코드를 작성할 수 있다.
+			var output = function(){
+				document.write("methodA의 return : " + a + ", b : " + b);
+			}//end of return function
+			return output;
+		}//////end of methodA
+		methodA(15)(7);
+		//이렇게 변수로 받은 다음에 처리하는 것도 가능하다는 것을 볼 수 있다.
+		//여기서 중요한 것은 함수의 리턴이 함수인 것이 가능하다는 것이다.
+	</script>
+</body>
+</html>

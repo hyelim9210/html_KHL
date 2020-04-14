@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/themes/color.css">
+    <link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/demo/demo.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="https://www.jeasyui.com/easyui/jquery.easyui.min.js"></script>
+	<script type="text/javascript">
+		function searchList(){
+			alert("조회 버튼 클릭 성공");
+		}
+	</script>
+</head>
+<body>
+	<table id = "dg_member" class="easyui-datagrid"></table>
+	<div id = "toolbar">
+		<!-- //onClick이 이벤트처리 해주는 핸들러 이름이다 on 붙은 게 표준, 없는 게 제이쿼리에서 제공하는 이벤트이다
+		//클래스 linkbutton >> easyUI에 있다 확인해보자. 여기 있는 것들이 스타일 시트에 설정이 되어있는 것이다. -->
+		 <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-search"
+		  plain="true" onclick="searchList()">조회</a>
+							<!-- javascript:searchList() -->
+							<!-- 원래는 이 코드이다. 자바스크립트 함수이니까 -->		
+		 <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true">입력</a>
+		 <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" plain="true">수정</a>
+		 <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true">삭제</a>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function (){
+			$("#dg_member").datagrid({
+				//페이지가 열릴 때 데이터를 조회하는 것이 아니라 조회 버튼을
+				//눌렀을 때 조회하도록 해보자
+				/*
+				$('#dg_member').datagrid(); //datagird()를 생성자라고 생각해도 된다.
+				$('#dg_member').datagrid({
+					url 제거
+				});
+				$('#btn_serch').click();
+				$('#btn_serch').click({function(){}});
+				$('#btn_serch').on('click', function(){});
+				*/
+				url : "../../json/dept.json"
+			 // , toolbar : "#toolbar"//여기에 #을 적어야 하나 적지 않아야 하나. 적어야 한다.
+			 ///div가 toolbar이다. 그걸 지우고 아래 추가해보자
+			  , toolbar: [{
+					iconCls: 'icon-search',
+					handler: searchList()
+				}]
+			  , title : "회원관리"
+			  , width : 700
+			  , height : 500
+			  , columns:[[
+				    {field:'deptno',title:'deptno'}
+				  , {field:'loc',title:'loc'}
+				]]
+			  , data : [//datagrid에 출력될 값(상수값)
+				  {deptno:'value1', loc:'value12'}
+				, {deptno:'value2', loc:'value22'}
+			    ]
+			  , onDblClickRow : function(index, row){
+				  //여기서 인덱스 값과 로우 값을 확인할 수 있다.
+				  alert("index : " + index + ", row : " + row.loc);
+			  }
+			  , onLoadSuccess : function(data){
+			//	  alert(data)
+			  }
+			});
+		});
+	</script>
+</body>
+</html>

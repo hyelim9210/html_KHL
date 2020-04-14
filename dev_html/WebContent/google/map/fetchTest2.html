@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div id = "d_result"></div>
+	<script type="text/javascript">
+		fetch('http://localhost:8000/dev_html/google/map/jsonMapList.jsp', {
+			method : "POST"
+		})
+		.then((resp) => resp.json())//위의 요청에 대한 응답을 json으로 받는다.
+		.then(function(data){//json에서 가져온 값이 data에 담긴다.
+		//var sb = null;
+		//for(var i = 0; i<data.size; i++){
+		//	sb += data[i].res_name + "\n";	
+		//}
+		//alert(sb);
+		var result = JSON.stringify(data);
+		var jsonDoc = JSON.parse(result);
+		document.getElementById("d_result").innerText = result;
+		//ajax가 없어도 서버에 뭔가 요청을 할 수 있다는 것을 확인했다.
+		});
+	</script>
+</body>
+</html>

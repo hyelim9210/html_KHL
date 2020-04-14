@@ -24,7 +24,6 @@
 	 		else{
 	 			alert("비어있다!")
 	 		}
-	 			break;
 	 	}
 	 	/* <!--
 		 	브라우저가 지원하지 않는 코드는 이 모양으로 주석 처리 해주기
@@ -35,7 +34,8 @@
 	<form id = "f_login" method = "get" action = "arrayTest.html">
 		아이디 : <input type = "text" id="mem_id" name = "name_id" onblur = "validate(this)">
 		<br>
-		<button onClick = "document.getElementById('f_login').submit();">로그인</button>
+		<!-- <button onClick = "document.getElementById('f_login').submit();">로그인</button> -->
+		<input type = "submit" value = "login">
 	</form>
 </body>
 </html>

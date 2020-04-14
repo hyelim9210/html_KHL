@@ -17,37 +17,63 @@
 			zoom : 16
 		  , center : new google.maps.LatLng(37.484332, 126.782803)
 		  , mapTypeId : google.maps.MapTypeId.ROADMAP
+		  //위성이냐 아니냐 그 아이디 값을 얘기하는 것이다. //ROADMAP이 우리가 보통 보는 지도이다.
+		  //SATELLITE 적으면 위성 roadmap이 디폴트 값이라 굳이 안 적어도 된다.
 		});
 		var infoWindow = new google.maps.InfoWindow();//구글에서 제공하는 말풍선 API
+		//말풍선을 클릭했을 때 열리는 창
 		var marker;//5개가 출력되어야 한다. 이것은 json에서 읽어와야한다. json으로 스캔해야한다.
+		//jsonMapList.jsp에서 읽어온다.
 		
 		var i; //마커에 대한 고유 숫자값. 마커 생성시 부여한 인덱스 값이라고 생각하자.(for문 안에서 사용..?)
 		$.ajax({
 			url: 'jsonMapList.jsp'
 		  , dataType : 'json'
 		  , success : function(data){//json의 응답이 data에 저장이 된다.
+			  //$("#d_map").text(data);
+			  //insert here
+			  //값을 가져오는 코드를 추가해보자
 			  var result = JSON.stringify(data);//직관적인 정보로 변환(구조체 - 덩어리로 받아온다)
+			  //이 구간에서 알아볼 수 있게 되는 것이다.
+			  
+			 // $("#d_map").text(result);
+			  //이렇게 하면 데이터들이 출력되는데, 데이터를 그대로 사용할 수 없으니까
+			  //파싱작업을 하자
 			  var jsonDoc = JSON.parse(result);// 배열로 전환해서 값을 하나씩 꺼낼 수 있게 해준다.
+			  //여기서 배열로 전환해주면서 객체화 처리가 되는 것이다.(배열로 처리가 된다는 것)
 			  for(var i=0;i<jsonDoc.length;i++){
+				  //배열에서 값을 꺼낼 때는 배열명.속성이름으로 꺼낸다.
+				// alert(jsonDoc[i].res_name);//로우에 대한 속성 값을 읽을 수 있다.
+				  //i가 바뀔 때마다 row가 바뀐다. res_name은 속성 값이다. 해당 로우의 해당 컬럼?
+		/////***********************************************************************************************////
 				marker = new google.maps.Marker({
 					id : i//여기에 0, 1, 2, 3, 4 까지의 인덱스 값이 담긴다. 이 하나하나가 마커의 인덱스 정보가 된다.
 				  , position : new google.maps.LatLng(jsonDoc[i].lat, jsonDoc[i].lng)
+					//포지션 값도 배열로 변경된다.
 				  , map : map//지도는 하나이다.  
 				  , title : jsonDoc[i].res_name//이 지도 안에 마커가 5개이므로 식당의 이름은 5개로 분류 되어야한다.
 				});//마커 5개가 for문 안에서 객체 생성 되니까 이벤트도 안에서 걸어야 한다. 밖에서 이벤트 처리를 하면 NullPointerException 발생한다.
 				google.maps.event.addListener(marker, 'click', (function(marker, i){///이 부분 특이하다 
+					//addListener(instance, eventName, handler)
+					//marker에, 'click' 이벤트가 발생 하면, function(marker,i)~ 하겠다.
+					//addListener 함수의 리턴값이 변수가 아니라 함수라는 의미이다.
 					return function(){//함수의 결과는 윈도우 창을 열어주는 행위이다.
+					//클릭하는 마커마다 다르게 동작해야하니까 반드시 이 클릭 이벤트 안에서 처리해야한다.
 						infoWindow.setContent('<b>'+jsonDoc[i].res_name +'</b>');
 						infoWindow.open(map, marker);
+						//클릭이 일어날 때마다 콘텐츠를 생성한다. 식당의 이름으로. 마커의 말풍선을 연다....?
 					}//end of 반환함수
 				})(marker, i));
 					
 				if(marker){//이렇게 쓸 수 있는 근거 : 자바스크립트에서는 0이 아니면 전부 true로 처리한다.
+					//마커를 생성했을 때 클릭이벤트를 처리하기 위해 추가 된 코드이다.
+					//지금 for문 안에 있다는 것 기억하기
 					marker.addListener('click', function(){
 						map.setZoom(18);//마커를 찍었을 때 확대 되는 느낌을 주기 위해 원래 marker보다 크게 한다.
 						map.setCenter(this.getPosition());
 					});
 				}
+		/////***********************************************************************************************////
 			  }
 		  }
 		});
