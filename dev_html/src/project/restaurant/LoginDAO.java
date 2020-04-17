@@ -16,8 +16,7 @@ public class LoginDAO {
 	CallableStatement cstmt = null;
 	OracleCallableStatement ocstmt = null;
 	ResultSet rs = null;
-	
-	public void proc_login2020(String u_id, String u_pw) {
+		public void proc_login2020(String u_id, String u_pw) {
 		
 		StringBuilder sql = new StringBuilder();
 		sql.append("{ call proc_login2020(?, ?, ?)}");

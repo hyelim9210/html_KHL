@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src = "http://code.jquery.com/jquery-3.4.1.js"></script>
+<style type="text/css">
+	#d_detail{
+			position: absolute;
+		}
+</style>
+<script type="text/javascript">
+	function startMethod(th){
+		var u_pic = $(th).attr("id");//속성이름이 id라는 뜻이다.
+		//alert("사용자가 마우스 오버 한 그림 : " + u_pic);
+		$.ajax({
+			//method를 get으로 하면 매번 똑같은 것만 들어간다.
+				method:"POST"
+			  //, url: "th_pictureInfo.jsp?id=" + u_pic + "&timestamp="+new Date().getTime()
+			  , url: "pictureList.jsp"
+			  , data: "id=" + u_pic	//이렇게 넘기는 것이 post 방식이다.	
+			  , success: function(result){
+				  $("#d_detail").css("left", th.offsetLeft+125+"px")
+			      $("#d_detail").css("top", th.offsetTop+"px")
+				  $("#d_detail").html(result);
+			}
+		});
+	}
+	function clearMethod(){
+		$("#d_detail").html("");
+	}
+</script>
+</head>
+<body>
+<!-- 	<table border = "1px">
+		<tr>
+			<th>그림 목록</th>
+		</tr>
+		<tr>
+			<td>
+				<p>
+					<img src = "zzangku.png" alt="짱구 사진">
+				</p>
+			</td>
+			<td width = 100 align = "center">
+				짱구
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p>
+					<img src = "chulsoo.png" alt="철수 사진">
+				</p>
+			</td>
+			<td align = "center">
+				철수
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p>
+					<img src = "hoony.png" alt="훈이 사진">
+				</p>
+			</td>
+			<td align = "center">
+				훈이
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p>
+					<img src = "mangku.png" alt="맹구 사진">
+				</p>
+			</td>
+			<td align = "center">
+				맹구
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p>
+					<img src = "yooree.png" alt="유리 사진">
+				</p>
+			</td>
+			<td align = "center">
+				유리
+			</td>
+		</tr>
+	</table> -->
+	<div id = "d_detail"></div>
+	<div id = "d_table" border = 1></div>
+	<script type="text/javascript">
+		$.ajax({
+			url : "pictureInfo.jsp"
+		  , method : "post"
+		  , success : function(result){
+				//var data = JSON.stringify(result);
+				var arData = JSON.parse(result);
+				var data = "";
+				data += "<table border = 1>";
+				data += "<tr><th colspan = 2>그림목록</th></tr>";
+				for(var i = 0; i<arData.length; i++){
+					data+="<tr>";
+					data+="<th>";
+					data+="<img width = 150 height = 150 src = '" + arData[i].pic_addr + "' alt = '" + arData[i].pic_name + "사진' />";
+					data+="</th>";
+					data+="<th id = " + arData[i].pic_addr + " width = 100"  + " onmouseover = 'startMethod(this)' onmouseout = 'clearMethod()'>";
+					data+=arData[i].pic_name;
+					data+="</th>";
+				data+="</tr>";
+				}
+				data+="</table>";
+				$("#d_table").html(data);
+			}
+		});
+	</script>
+</body>
+</html>

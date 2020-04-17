@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script type="text/javascript">
+		fetch('customerInfo.jsp',{//url
+			method: "get"                                                                                                                                                                                                                                                               
+		}).then(response => response.json())//웅답
+		  .then(json => console.log(json))//console창에 한 번 찍어보자
+	</script>
+</body>
+</html>

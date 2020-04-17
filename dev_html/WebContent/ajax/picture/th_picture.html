@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link type = "text/css" rel = "stylesheet" href = "pictureMain.css">
+<script type="text/javascript" src = "http://code.jquery.com/jquery-3.4.1.js"></script>
+	<style type="text/css">
+		table {
+			border: 1px solid black;
+		}
+		#d_detail{
+			position: absolute;
+		}
+	</style>
+	<script type="text/javascript">
+		function startMethod(td){
+			//$("#d_detail").attr("left", 150);
+			//$("#d_detail").attr("top", 150);
+			var u_pic = $(td).attr("id");//속성이름이 id라는 뜻이다.
+		//	alert("사용자가 마우스 오버 한 그림 : " + u_pic);
+			$.ajax({
+				//method를 get으로 하면 매번 똑같은 것만 들어간다. 그러니까 post방식으로 해보자
+				method:"POST"
+			  //, url: "th_pictureInfo.jsp?id=" + u_pic + "&timestamp="+new Date().getTime()
+			  , url: "th_pictureInfo.jsp"
+			  , data: "id=" + u_pic	//이렇게 넘기는 것이 post 방식이다.
+			  , success: function(result){
+				$("#d_detail").css("left", td.offsetLeft+125+"px")
+				$("#d_detail").css("top", td.offsetTop+"px")
+				$("#d_detail").html(result);
+			  }
+			});
+		}
+		function clearMethod(){
+			$("#d_detail").html("");
+		}
+	</script>
+</head>
+<body>
+	<div id = "d_detail">여기</div>
+	<table border = 1>
+		<thead>
+			<th colspan = "2">그림소개</th>
+		</thead>
+		<tbody>
+			<tr>
+				<td align = "center"><img src = "zzangku.png" width = "150" height = "150"/></td>
+				<td width = "100px" id = "zzangku.png" onmouseover = "startMethod(this)" onmouseout = "clearMethod()">짱구</td>
+			</tr><!-- 위의 this는 해당 td 태그이다. -->
+			<tr>
+				<td align = "center"><img src = "chulsoo.png" width = "150" height = "150"/></td>
+				<td id = "chulsoo.png" onmouseover = "startMethod(this)" onmouseout = "clearMethod()">철수</td>
+			</tr>
+			<tr>
+				<td align = "center"><img src = "mangku.png" width = "150" height = "150"/></td>
+				<td id = "mangku.png" onmouseover = "startMethod(this)" onmouseout = "clearMethod()">맹구</td>
+			</tr>
+			<tr>
+				<td align = "center"><img src = "hoony.png" width = "150" height = "150"/></td>
+				<td id = "hoony.png" onmouseover = "startMethod(this)" onmouseout = "clearMethod()">훈이</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

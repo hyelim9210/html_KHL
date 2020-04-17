@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src = "http://code.jquery.com/jquery-3.4.1.js"></script>
+</head>
+<body>
+	<div id = "d_info"></div>
+	<script type="text/javascript">
+	//이페이지의 목적은 customerInfo의 json에 대한 테스트를 하는 것이다.
+	/*
+	소통에 필요한 어플리케이션 제작에 관심이 있으면, 리액트에 관심이 있으면 ajax보다는 fetch를 이용해서
+	테스트 하는 연습 해두기 >> customerFetch.html
+	*/
+	/*
+		이 코드에서 ready 함수를 사용하지 않고 있다. 사용 했을 때와 사용하지 않았을 때의 차이점은?
+		
+	*/
+		$.ajax({
+			url : "customerInfo.jsp"
+		  , method : "get" //get 말고는 post가 올 수 있음. post로 하면 data 속성을 같이 사용하게 된다.
+  			//여기서 전송방식은 사용자가 서버에게 전송하는 것이고, 요청이다. 서버가 사용자에게 전송하는 것은 응답이다.
+		  , dataType : "json"///////////////
+		  , success : function(result){
+			  alert(result);
+			  //fetch함수로 처리할 때는 result.trim() 처리를 해서 공백문자를 꼭 제거해줘야 한다.
+			  var res = JSON.stringify(result);
+			  //$("#d_info").text(res);//문자로 처리할 때는 text로 하면 된다.
+			  //위의 코드로 json의 데이터가 잘 나오는지 확인했다. 이제 이건 주석처리하고 배열로 전환해보자
+			  var resDoc = JSON.parse(res);//배열 전환
+			  for(var i=0;i<resDoc.length;i++){
+			//	  alert(resDoc[i].mem_tel);
+				  if("010-1234-5678"==resDoc[i].mem_tel){//자바가 아니라서 그냥 ==로 비교해도 된다.
+					  alert(resDoc[i].mem_addr);
+				  }
+			  }
+		  }
+		});
+	</script>
+</body>
+</html>

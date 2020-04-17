@@ -10,7 +10,7 @@
 		//out.print(u_id+"<br>");
 		String u_pw = request.getParameter("mem_pw");
 		//out.print(u_pw);
-		if(u_id.equals(db_id)){//아아디가 존재하니?
+		if(u_id.equals(db_id)){//아이디가 존재하니?
 			if(u_pw.equals(db_pw)){//비번은?
 				db_name = "ttestt";
 				

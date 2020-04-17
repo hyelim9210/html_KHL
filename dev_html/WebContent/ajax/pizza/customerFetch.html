@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- 
+	리액트를 사용해야 하는 이유
+	트위터를 위해서 만들어진 react의 경우 jquery의 비중을 줄여야만 한다.
+	왜냐하먄 react에서는 DOM API를 활용하여 태그의 조작이나 태그 생성 등을 직접 클래스를 생성하여
+	작성하므로 jquery의 사상과 맞지 않다.
+	react에서는 클래스를 사용자 정의 클래스로 사용하는 것을 권장한다.(직접 만들어서 사용한다.)
+	jquery는 만들어진 클래스를 가져다가 사용한다.
+	그래서 jquery와 react를 같이 사용할 경우 충돌이 일어나서 에러 원인이 된다.
+	또한 react는 서버 측에 대한 처리와 기존의 자바스크립트가 하지 못하는 DB연동을 직접 할 수 있도록
+	지원하는데, 이때 Node.js API를 사용한다. 그래서 jquery와 Node.js 사이에서도 충돌이
+	발생하게 된다. Node.js와 jquery 둘이 다른 제품인데 기반은 똑같이 js기반의 오픈 소스이기
+	때문에 충돌이 일어날 수 밖에 없다. 
+ -->
+</head>
+<body>
+	<script type="text/javascript">
+		fetch('customerInfo.jsp',{//url
+			method: "post"//여기서 get방식으로 하면 에러가 난다. body랑 관련있는데 잘 모르겠다
+		  , body: JSON.stringify({
+			  title:"foo"
+			, name: "bar"
+			, no: 1
+		  	})
+		  , headers: {
+			  "Content-type" : "application/json;charset=utf-8"
+			  //헤어 영역에 마임타입, 인코딩 타입의 정보를 주었다.
+		  }
+		}).then(response => response.json())//웅답
+		  .then(json => console.log(json))//console창에 한 번 찍어보자
+	</script>
+</body>
+</html>

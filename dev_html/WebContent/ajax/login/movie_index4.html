@@ -39,40 +39,36 @@
 					return new Date();
 				}
 			}
-		$(document).ready(function(){
-			var c_name = null;
-			c_name = $.cookie('c_name');
-			//쿠키에서 꺼낸 이름이 null이면 로그인을 하지 않은 상태
-			
-		function loginAction(){
-			//사용자가 입력한 아이디 담기
-			var u_id = $("#mem_id").val();
-			var u_pw = $("#mem_pw").val();
-			var param = "mem_id="+u_id+"&mem_pw="+u_pw;
-			$.ajax({
-				method: "post"
-			  , url: "loginAction.jsp"
-			  , data: param
-			  , dataType: "html"
-			  , success: function(data){
-				  //alert("data.length : " + data.length);
-				  //alert("data.trim().length : " + data.trim().length);
-				  if(data.trim() == ("아이디 없음")){
-					  alert("아이디가 없음")
-					  $("#mem_id").textbox('setValue', '');
-					  return;
-				  } else if(data.trim()==("비번 틀림")){
-					  alert("비밀번호가  틀림")
-					  $("#mem_pw").passwordbox('setValue', '');
-					  return;
-				  } else {
-					  $.cookie("c_name", data.trim());
-					  $("#d_login").hide();
-					  $("#d_logout").show();
-				  }
-			  	}
-			});///////////////end of ajax
-		}//////////end of loginAction
+			function loginAction(){
+				//사용자가 입력한 아이디 담기
+				var u_id = $("#mem_id").val();
+				var u_pw = $("#mem_pw").val();
+				var param = "mem_id="+u_id+"&mem_pw="+u_pw;
+				$.ajax({
+					method: "post"
+				  , url: "loginAction.jsp"
+				  , data: param
+				  , dataType: "html"
+				  , success: function(data){
+					  //alert("data.length : " + data.length);
+					  alert("data.trim().length : " + data.trim().length);
+					  if(data.trim() == ("아이디 없음")){
+						  alert("아이디가 없음")
+						  $("#mem_id").textbox('setValue', '');
+						  return;
+					  } else if(data.trim()==("비번 틀림")){
+						  alert("비밀번호가  틀림")
+						  $("#mem_pw").passwordbox('setValue', '');
+						  return;
+					  } else {
+						  $.cookie("c_name", data.trim());
+						  $("#d_login").hide();
+						  $("#d_logout").show();
+						  $("#d_ok").text( $.cookie("c_name")+"님 환영합니다.");
+					  }
+				  	}
+				});///////////////end of ajax
+			}//////////end of loginAction
 		
 		/*로그인 시에는 SELECT문을 통해 인증 서비스를 처리해야 하므로 브라우저에서 톰캣 서버로,
 		다시 톰캣 서버에서 오라클 서버로 요청을 보낸 후 오라클이 응답한 메시지를 다시 톰캣으로,
@@ -86,6 +82,11 @@
 			$("#d_logout").hide();
 			
 		}////////////end of logoutAction
+		$(document).ready(function(){
+			var c_name = null;
+			c_name = $.cookie('c_name');
+			//쿠키에서 꺼낸 이름이 null이면 로그인을 하지 않은 상태
+			
 			$('#tree_movie').tree({
 				onClick: function(node){
 					alert(node.text);  // 선택한 노드의 문자열을 가져온다.
@@ -152,18 +153,18 @@
 		                    <li data-options="state:'closed'">
 		                        <span>예매관리</span>
 		                        <ul>
-		                            <li>
-		                                <span>회원목록</span>
-		                            </li>
-		                            <li>
-		                                <span>회원등록</span>
-		                            </li>
-		                            <li>
-		                                <span>회원수정</span>
-		                            </li>
-		                            <li>
-		                                <span>회원수정</span>
-		                            </li>
+		                           <li>
+			                            <span>예매조회</span>
+			                        </li>
+			                        <li>
+			                            <span>예매하기</span>
+			                        </li>
+			                        <li>
+			                            <span>예매수정</span>
+			                        </li>
+			                        <li>
+			                            <span>예매취소</span>
+			                        </li>
 		                        </ul>
 		                    </li>
             			</ul>
