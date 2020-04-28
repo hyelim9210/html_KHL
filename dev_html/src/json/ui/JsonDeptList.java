@@ -12,6 +12,7 @@ public class JsonDeptList {
 	public List<Map<String, Object>> getDeptList() {
 		List<Map<String, Object>> deptList = new ArrayList<Map<String,Object>>();
 		Map<String, Object> rmap = new HashMap<String, Object>();
+		
 		rmap.put("rno", 1);
 		rmap.put("deptno", 10);
 		rmap.put("dname", "총무부");

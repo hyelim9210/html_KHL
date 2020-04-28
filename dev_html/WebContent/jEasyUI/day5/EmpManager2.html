@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/themes/color.css">
+    <link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/demo/demo.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="https://www.jeasyui.com/easyui/jquery.easyui.min.js"></script>
+	<script type="text/javascript">
+		function empList(){
+			  $("#dg_emp").datagrid({//datagrid 속성을 재정의
+				  url: "http://localhost:8000/dev_html/jEasyUI/day5/jsonEmpList.jsp"
+			    , onLoadSuccess: function(data){
+			    	alert("새로고침 성공 : " + data);
+			      }
+			  });
+		}///end of empList
+	</script>
+</head>
+<body>
+    <table id="dg_emp"></table>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#dg_emp').datagrid({
+			    url:'jsonEmpList.jsp'
+			    ,title:'사원관리-자바스크립트만으로 구성'
+			    ,columns:[[
+			        {field:'EMPNO',title:'사원번호',width:120,align:'center'},
+			        {field:'ENAME',title:'사원이름',width:160,align:'center'},
+			        {field:'SAL',title:'급여',width:140,align:'center'}
+			    ]]
+				,toolbar: [{
+								iconCls: 'icon-search'
+								,text: '사원조회'
+								,handler: function(){//이 컴포넌트에 디폴트로 대응되는 이벤트 핸들로
+									empList();	
+									alert('조회');
+								}
+						   },'-',{
+								iconCls: 'icon-add'
+								,text: '사원등록'
+								,handler: function(){
+									alert('입력')
+									}
+						   },'-',{
+								iconCls: 'icon-edit'
+								,text: '사원수정'
+								,handler: function(){
+									alert('수정')
+									}
+						   },'-',{
+								iconCls: 'icon-remove'
+								,text: '사원삭제'
+								,handler: function(){
+									alert('삭제')
+									}
+					       }]
+			});/////////end of datagrid
+		});///////end of ready
+	</script>
+</body>
+</html>

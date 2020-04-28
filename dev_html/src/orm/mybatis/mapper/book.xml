@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+  <!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="orm.mybatis.mapper.bookMapper">
+	
+	<select id = "getBookList" parameterType="map" resultType="map">
+		select book_no, book_title, book_img, book_author
+			 , book_publish, book_price
+ 		from AJAX_BOOK 
+ 		<where>
+	 		<if test = 'book_title != null and choMode.equals("N")'>
+	 			AND book_title Like '%' || #{book_title} || '%'
+	 		</if>
+	 		<if test = 'book_title != null and choMode.equals("Y")'>
+	 			AND fn_choseong(book_title) Like '%' || #{book_title} || '%'
+	 		</if>
+ 		</where>
+ 		ORDER BY book_title asc
+	</select>
+	
+	<select id="bookList" parameterType="map" resultType="java.util.Map">
+		select book_no, book_title, book_img
+			 , book_author, book_publish, book_price
+ 		  from AJAX_BOOK 
+		  <if test="book_no>0">
+		where book_no = #{book_no}
+		  </if>
+	</select>
+	
+	<select id="bookListVO" parameterType="vo" resultType="vo">
+		select book_no, book_title, book_img
+			 , book_author, book_publish, book_price
+ 		  from AJAX_BOOK 
+		  <if test="book_no>0">
+		where book_no = #{book_no}
+		  </if>
+	</select>
+	
+</mapper> 
+ 

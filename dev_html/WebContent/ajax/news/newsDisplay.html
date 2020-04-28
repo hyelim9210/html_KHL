@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src = "http://code.jquery.com/jquery-3.4.1.js"></script>
+<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../demo.css">
+    <script type="text/javascript" src="../../jquery.min.js"></script>
+
+<!-- ajax와 타임라인의 콜라보가 필요하다. -->
+<!-- 다이나믹 하고, 가치있는 것들은 모두 콜라보가 필수적이다. -->
+	<style type="text/css">
+		table{
+			border: 1px solid black;
+			width: 600px;
+			height: 30px;
+		}
+	</style>
+	<script type="text/javascript">
+	//타임라인을 걸 스크립트
+		function autoLoad(){
+			$.ajax({
+				method: 'get'
+			  , url: 'newsData1.jsp'
+			  , dataType: 'html'
+			  , success:function(result){
+				  $("#d_news").html(result);
+			  }
+			  , fail: function(xhrObject, textStatus){
+				  alert(xhrObject.responseText + ", " + textStatus);
+			  }
+			});
+		}
+		
+	</script>
+</head>
+<body>
+	<h3>헤드라인 뉴스</h3>
+	<div id = "d_news">뉴스 준비중...</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			function start(){
+				setInterval(autoLoad, 1000);//3초마다 autoLoad함수 호출
+			}
+			start();
+		});
+	</script>
+</body>
+</html>

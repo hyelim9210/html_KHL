@@ -11,7 +11,7 @@
 
 <%
 /* 이렇게 생긴 땅이 자바 땅이다. */
-	String mem_id = request.getParameter("mem_id");
+	String mem_id = request.getParameter("mem_name");
 	out.print(mem_id);
 %>
 </body>

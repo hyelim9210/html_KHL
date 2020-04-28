@@ -6,9 +6,9 @@
 <!-- innerHTML, innerText, h1태그, button -->
 	<script type="text/javascript">
 		function confirm(){
-		var v_msg = document.getElementById("d_msg");
+		var v_msg = document.getElementById("d_msg").innerText;
 		/* v_msg.innerText="after v_msg : " + v_msg; */
-		 v_msg.innerHTML = "<font color='red'><h1>after</h1></font> v_msg:" + v_msg;
+		 d_msg.innerHTML = "<font color='red'><h1>after</h1></font> v_msg:" + v_msg;
 		/* _msg.innerText = "<font color='red'><h1>after</h1></font> v_msg:" + v_msg; */
 		}
 	</script>
@@ -23,7 +23,7 @@
 		//여기서 undefine이 떨어지면 이 위치에서는 d_msg를 읽지 못하는 것이다.
 		</script> -->
 	<div id = "d_msg">당신의 아이디를 입력하세요.[안내]</div> <!--  아이디를 주었다. 그래서 이 아이디에 접근할 수 있다. -->
-	<script type="text/javascript">
+	<script type="text/javascript">  
 	//after
 		/* var v_msg = document.getElementById("d_msg"); */
 		/* document.write(v_msg); */

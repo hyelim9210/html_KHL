@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration     PUBLIC "-//mybatis.org//DTD Config 3.0//EN"     "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias alias = "vo" type="com.vo.BookVO"/>
+	</typeAliases>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="oracle.jdbc.driver.OracleDriver" />
+				<property name="url" value="jdbc:oracle:thin:@192.168.0.191:1521:orcl11" />
+				<property name="username" value="scott" />
+				<property name="password" value="tiger" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+	<!-- 
+		DML구문 즉, SELECT, INSERT, UPDATE, DELETE가 작성된
+		xml 파일의 물리적인 위치와 파일명을 등록해주는 작업이다.
+		부서 정보도 같이 관리하고 싶으면 mapper resource 문장을 하나 더
+		추가해주고 eml.xml 대신 dept.xml을 적어주면 된다.
+		상위 태그가 mappers인 것을 보면 mapper 태그가 여러 개 올 수 있을 것이라는
+		예측을 할 수 있다.
+		 configuration.xml 안에서 쿼리문을 가지고 있는 xml문서의 물리적인 주소를 mapper로 등록 해야한다.
+		 이렇게 mapper로 등록을 해놓으면 configuration.xml에서는 해당 xml문서를 참조하는 것이다. 
+	 -->
+		<mapper resource="orm/mybatis/mapper/emp.xml" /> <!-- 쿼리문을 가지고 있는 xml문서의 물리적인 주소 -->
+		<mapper resource="orm/mybatis/mapper/dept.xml" />
+		<mapper resource="orm/mybatis/mapper/book.xml" />
+		<mapper resource="orm/mybatis/mapper/common.xml" />
+	</mappers>
+</configuration> 
