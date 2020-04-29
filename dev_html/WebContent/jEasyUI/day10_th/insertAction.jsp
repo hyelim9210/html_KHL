@@ -51,13 +51,19 @@
 	int result = eDao.empINS(pMap);
 	out.print("result : " + result); */
 	
-	//response.sendRedirect("EmpManagerVer7.jsp");
+	
 	
 	HashMapBinder mBinder = new HashMapBinder();
 	SqlMapEmpDao eDao = new SqlMapEmpDao();
 
 	Map<String, String[]> pMap = request.getParameterMap();
 	Map<String, Object> dataMap = mBinder.getDataMap(pMap);
-	int result = eDao.empINS(dataMap);
-	out.print("result : " + result);
+	int result = eDao.empINS(dataMap);///////////////여기가 가장 중요하다.
+	
+	 if(result ==1){
+		response.sendRedirect("EmpManagerVer8.jsp");//이 페이지가 열리기 전에 디비를 경유한다.
+	}
+	else{
+		response.sendRedirect("failView.jsp");
+	}
 %>

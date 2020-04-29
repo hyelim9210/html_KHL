@@ -20,6 +20,7 @@
 		  <if test="empno>0">
 		where empno = #{value}<!-- parameterType이 map일 때와 원시형 타입일 때를 구분해야 한다. -->
 		  </if>
+		  order by empno desc
 	</select>
 	<delete id="empDelete" parameterType = "map">
 		delete from emp where empno = #{empno}
